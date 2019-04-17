@@ -38,6 +38,7 @@ test:
     - {{ name|lower }}
   commands:
     - python -c "import {{ name|lower }};"
+    - ainawuffa_toot
 
 extra:
   recipe-maintainers:
