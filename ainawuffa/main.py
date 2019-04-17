@@ -13,6 +13,7 @@
 def toot():
     print()
     print("!!! _Toot_ from ainawuffa!")
+    print("    ======================")
     print()
 
 if __name__ == "__main__":
