@@ -1,0 +1,62 @@
+{% set data = load_setup_py_data(setup_file='../setup.py', from_recipe_dir=True) %}
+{% set name = data.get('name') %}
+{% set version = data.get('version') %}
+{% set url = data.get('url') %}
+{% set description = data.get('description') %}
+{% set keywords = data.get('keywords') %}
+{% set license = data.get('license') %}
+
+source:
+  path: ../
+
+about:
+    home: "{{ url }}"
+    license_file: LICENSE.txt
+    # see: https://github.com/conda/conda-build/blob/master/conda_build/license_family.py#L8-L23
+    license_family: OTHER
+    license: "{{ license }}"
+    summary: "{{ description }}"
+    keywords: "{{ keywords }}"
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+build:
+  script: python setup.py install
+  noarch: python
+  entry_points:
+    - apstools_plan_catalog = apstools.examples:main
+    - bluesky_snapshot = apstools.snapshot:snapshot_cli
+    - bluesky_snapshot_viewer = apstools.snapshot:snapshot_gui
+
+requirements:
+  host:
+    - pip
+    - python
+    - ophyd
+    - databroker
+    - bluesky
+    - pyRestTable
+    - pandas
+    - xlrd
+  run:
+    - python
+    - ophyd
+    - databroker
+    - bluesky
+    - pyRestTable
+    - pandas
+    - xlrd
+
+test:
+  imports:
+    - apstools
+    - apstools.synApps_ophyd
+  commands:
+    - python -c "import apstools;"
+    - bluesky_snapshot --help
+
+extra:
+  recipe-maintainers:
+    - prjemian
