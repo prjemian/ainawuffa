@@ -5,23 +5,20 @@ packaging setup for ainawuffa
 # Always prefer setuptools over distutils
 from setuptools import setup, find_packages
 #from codecs import open
-from os import path
+import os
 import sys
 import versioneer
 
-here = path.abspath(path.dirname(__file__))
-sys.path.insert(0, path.join('ainawuffa', ))
+here = os.path.dirname(__file__)
+sys.path.insert(0, os.path.join(here, 'ainawuffa', ))
 import ainawuffa as package
-
 
 __entry_points__  = {
     'console_scripts': [
-        'ainawuffa_toot'
-        'ainawuffa_toot = ainawuffa.ainawuffa:toot',
+        'ainawuffa_toot = ainawuffa.main:toot',
         ],
     #'gui_scripts': [],
 }
-
 
 setup(
     author           = package.__author__,
