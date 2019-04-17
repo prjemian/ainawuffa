@@ -17,6 +17,7 @@ import ainawuffa as package
 __entry_points__  = {
     'console_scripts': [
         'ainawuffa_toot'
+        'ainawuffa_toot = ainawuffa.ainawuffa:toot',
         ],
     #'gui_scripts': [],
 }
