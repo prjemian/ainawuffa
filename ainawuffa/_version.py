@@ -42,8 +42,8 @@ def get_config():
     cfg.VCS = "git"
     cfg.style = "pep440"
     cfg.tag_prefix = ""
-    cfg.parentdir_prefix = "apstools-"
-    cfg.versionfile_source = "apstools/_version.py"
+    cfg.parentdir_prefix = "ainawuffa-"
+    cfg.versionfile_source = "ainawuffa/_version.py"
     cfg.verbose = False
     return cfg
 
